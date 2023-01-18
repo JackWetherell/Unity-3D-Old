@@ -15,9 +15,14 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(sidewaysForce * Time.deltaTime, 0.0F, 0.0F, ForceMode.VelocityChange);
         }
 
-        else if (Input.GetKey("a"))
+        if (Input.GetKey("a"))
         {
             rb.AddForce(-sidewaysForce * Time.deltaTime, 0.0F, 0.0F, ForceMode.VelocityChange);
+        }
+
+        if (rb.position.y < -1)
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
